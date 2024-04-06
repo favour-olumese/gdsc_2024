@@ -16,9 +16,14 @@ Including another URLconf
 """
 from django.urls import path
 from . import views
+from .views import BookListView, BookUpdateView, BookDeleteView, BookCreateView
 
 urlpatterns = [
     path('', views.fav, name='fav'),
     path('hello/', views.home, name='home'),
     path('api/hello/', views.home_api, name='home-api'),
+    path("books/", BookListView.as_view(), name='book-list'),
+    path("book/add/", BookCreateView.as_view(), name="book-add"),
+    path("book/<int:pk>/", BookUpdateView.as_view(), name="book-update"),
+    path("book/<int:pk>/delete/", BookDeleteView.as_view(), name="book-delete"),
 ]
