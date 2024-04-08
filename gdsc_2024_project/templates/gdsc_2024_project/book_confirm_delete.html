@@ -1,5 +1,16 @@
-<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    {{ form }}
-    <input type="submit" value="Confirm">
-</form>
+{% extends 'gdsc_2024_project/base.html' %}
+{% block title %}
+    <title>Delete Book | Favour O.</title>
+{% endblock %}
+
+{% block content %}
+    {% if perms.admin %}
+        <form method="post">{% csrf_token %}
+            <p>Are you sure you want to delete "{{ object }}"?</p>
+            {{ form }}
+            <input type="submit" value="Confirm">
+        </form>
+    {% else %}
+        <p>You do not have the required permission to delete books.</p>
+    {% endif %}
+{% endblock %}

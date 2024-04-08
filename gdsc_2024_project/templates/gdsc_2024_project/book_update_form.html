@@ -1,4 +1,15 @@
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update">
-</form>
+{% extends 'gdsc_2024_project/base.html' %}
+{% block title %}
+    <title>Update Book | Favour O.</title>
+{% endblock %}
+
+{% block content %}
+    {% if perms.admin %}
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Update">
+        </form>
+    {% else %}
+        <p>You do not have the required permission to update books.</p>
+    {% endif %}
+{% endblock %}
