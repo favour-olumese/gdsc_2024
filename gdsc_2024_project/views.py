@@ -9,6 +9,7 @@ from django.contrib.auth import login
 from django.urls import reverse
 from .forms import CustomUserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import Book
 
 # Create your views here.
@@ -33,6 +34,13 @@ def home(request):
 
 def home_api(request):
     return JsonResponse({'message': 'Hello GDSC'})
+
+
+@login_required
+@permission_required("admin", raise_exception=True)
+def earnings(request):
+    return render(request, 'gdsc_2024_project/earnings.html')
+
 
 
 class BookCreateView(CreateView):
