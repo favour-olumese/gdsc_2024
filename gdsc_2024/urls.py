@@ -28,3 +28,7 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Admin Dashboard Title
+admin.site.site_header = "Fav Admin Dashboard"
+admin.site.site_title = "Fav Admin Dashboard"
